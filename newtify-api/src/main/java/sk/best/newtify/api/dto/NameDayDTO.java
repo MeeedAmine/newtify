@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * NameDayDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-07-13T17:30:35.813966300+02:00[Europe/Vienna]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-07-14T11:12:27.734810200+02:00[Europe/Vienna]")
 public class NameDayDTO implements Serializable {
 
   private static final long serialVersionUID = 1L;
