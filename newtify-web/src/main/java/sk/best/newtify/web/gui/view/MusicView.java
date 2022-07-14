@@ -21,8 +21,8 @@ import java.util.List;
  * Copyright © 2022 BEST Technická univerzita Košice.
  * All rights reserved.
  */
-@PageTitle("Finance")
-@Route(value = "finance", layout = MainLayout.class)
+@PageTitle("Music")
+@Route(value = "music", layout = MainLayout.class)
 public class MusicView extends FlexLayout {
 
     private static final long serialVersionUID = 4107656392983873277L;
