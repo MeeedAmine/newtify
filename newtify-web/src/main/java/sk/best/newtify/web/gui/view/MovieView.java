@@ -9,6 +9,7 @@ import org.springframework.beans.factory.ObjectFactory;
 import sk.best.newtify.api.ArticlesApi;
 import sk.best.newtify.api.dto.ArticleDTO;
 import sk.best.newtify.web.gui.component.article.ArticlePreviewComponent;
+import sk.best.newtify.web.gui.component.widget.MovieWidgetComponent;
 import sk.best.newtify.web.gui.component.widget.NameDayWidgetComponent;
 import sk.best.newtify.web.gui.layout.MainLayout;
 
@@ -25,6 +26,7 @@ public class MovieView extends FlexLayout {
     private final ArticlesApi articlesApi;
     private final ObjectFactory<ArticlePreviewComponent> articlePreviewObjectFactory;
     private final ObjectFactory<NameDayWidgetComponent>  nameDayWidgetComponentObjectFactory;
+    private final ObjectFactory<MovieWidgetComponent> movieWidgetComponentObjectFactory;
 
     private final VerticalLayout middleContent      = new VerticalLayout();
     private final VerticalLayout leftWidgetContent  = new VerticalLayout();
@@ -34,10 +36,12 @@ public class MovieView extends FlexLayout {
 
     public MovieView(ArticlesApi articlesApi,
                     ObjectFactory<ArticlePreviewComponent> articlePreviewObjectFactory,
-                    ObjectFactory<NameDayWidgetComponent> nameDayWidgetComponentObjectFactory) {
+                    ObjectFactory<NameDayWidgetComponent> nameDayWidgetComponentObjectFactory,
+                    ObjectFactory<MovieWidgetComponent> movieWidgetComponentObjectFactory) {
         this.articlesApi                         = articlesApi;
         this.articlePreviewObjectFactory         = articlePreviewObjectFactory;
         this.nameDayWidgetComponentObjectFactory = nameDayWidgetComponentObjectFactory;
+        this.movieWidgetComponentObjectFactory = movieWidgetComponentObjectFactory;
     }
 
     @PostConstruct
@@ -76,8 +80,11 @@ public class MovieView extends FlexLayout {
         setFlexShrink(2, leftWidgetContent);
         setFlexGrow(1, leftWidgetContent);
 
-        NameDayWidgetComponent nameDayWidget = nameDayWidgetComponentObjectFactory.getObject();
-        leftWidgetContent.add(nameDayWidget);
+        //NameDayWidgetComponent nameDayWidget = nameDayWidgetComponentObjectFactory.getObject();
+        MovieWidgetComponent movieWidgetComponent = movieWidgetComponentObjectFactory.getObject();
+
+        leftWidgetContent.add(movieWidgetComponent);
+
     }
 
     private void fetchArticles() {

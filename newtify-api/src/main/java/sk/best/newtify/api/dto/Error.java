@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * Error
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-07-14T11:12:27.734810200+02:00[Europe/Vienna]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-07-15T08:57:32.948523300+02:00[Europe/Skopje]")
 public class Error implements Serializable {
 
   private static final long serialVersionUID = 1L;
