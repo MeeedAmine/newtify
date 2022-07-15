@@ -122,6 +122,48 @@ paths:
       responses:
         "200":
           description: Article was successfully updated
+  /v1/comments:
+    get:
+      description: Endpoint to retrieve all comments
+      operationId: retrieveComment
+      tags:
+        - comments
+      parameters:
+        - name: articleUuid
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: returns comments
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommentDTO"
+    post:
+      description: This is the endpoint which will create a comment
+      operationId: createComment
+      tags:
+        - comments
+      requestBody:
+        description: Data model for comment creation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCommentDTO"
+            example:
+              articleId: ii23hx
+              author: John Doe
+              text: a nice comment
+              createdAt: 3847319
+      responses:
+        "201":
+          description: Hey, everything went well
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommentDTO"
   /v1/namedays:
     get:
       description: Endpoint to retrieve name day for specified day and month
@@ -158,6 +200,30 @@ paths:
           $ref: "#/components/responses/internalServerError"
 components:
   schemas:
+    CommentDTO:
+      type: object
+      properties:
+        uuid:
+          type: string
+        articleId:
+          type: string
+        text:
+          type: string
+        createdAt:
+          type: long
+        author:
+          type: string
+    CreateCommentDTO:
+      type: object
+      properties:
+        articleID:
+          type: string
+        text:
+          type: string
+        createdAt:
+          type: long
+        author:
+          type: string
     ArticleDTO:
       type: object
       properties:

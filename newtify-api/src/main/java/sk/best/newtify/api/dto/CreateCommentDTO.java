@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import sk.best.newtify.api.dto.ETopicType;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -17,19 +16,16 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * CreateArticleDTO
+ * CreateCommentDTO
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-07-15T14:11:33.660158200+02:00[Europe/Vienna]")
-public class CreateArticleDTO implements Serializable {
+public class CreateCommentDTO implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @JsonProperty("title")
-  private String title;
-
-  @JsonProperty("shortTitle")
-  private String shortTitle;
+  @JsonProperty("articleID")
+  private String articleID;
 
   @JsonProperty("text")
   private String text;
@@ -40,48 +36,26 @@ public class CreateArticleDTO implements Serializable {
   @JsonProperty("author")
   private String author;
 
-  @JsonProperty("topicType")
-  private ETopicType topicType;
-
-  public CreateArticleDTO title(String title) {
-    this.title = title;
+  public CreateCommentDTO articleID(String articleID) {
+    this.articleID = articleID;
     return this;
   }
 
   /**
-   * Get title
-   * @return title
+   * Get articleID
+   * @return articleID
   */
   
-  @Schema(name = "title", required = false)
-  public String getTitle() {
-    return title;
+  @Schema(name = "articleID", required = false)
+  public String getArticleID() {
+    return articleID;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setArticleID(String articleID) {
+    this.articleID = articleID;
   }
 
-  public CreateArticleDTO shortTitle(String shortTitle) {
-    this.shortTitle = shortTitle;
-    return this;
-  }
-
-  /**
-   * Get shortTitle
-   * @return shortTitle
-  */
-  
-  @Schema(name = "shortTitle", required = false)
-  public String getShortTitle() {
-    return shortTitle;
-  }
-
-  public void setShortTitle(String shortTitle) {
-    this.shortTitle = shortTitle;
-  }
-
-  public CreateArticleDTO text(String text) {
+  public CreateCommentDTO text(String text) {
     this.text = text;
     return this;
   }
@@ -100,7 +74,7 @@ public class CreateArticleDTO implements Serializable {
     this.text = text;
   }
 
-  public CreateArticleDTO createdAt(Long createdAt) {
+  public CreateCommentDTO createdAt(Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -119,7 +93,7 @@ public class CreateArticleDTO implements Serializable {
     this.createdAt = createdAt;
   }
 
-  public CreateArticleDTO author(String author) {
+  public CreateCommentDTO author(String author) {
     this.author = author;
     return this;
   }
@@ -138,25 +112,6 @@ public class CreateArticleDTO implements Serializable {
     this.author = author;
   }
 
-  public CreateArticleDTO topicType(ETopicType topicType) {
-    this.topicType = topicType;
-    return this;
-  }
-
-  /**
-   * Get topicType
-   * @return topicType
-  */
-  @Valid 
-  @Schema(name = "topicType", required = false)
-  public ETopicType getTopicType() {
-    return topicType;
-  }
-
-  public void setTopicType(ETopicType topicType) {
-    this.topicType = topicType;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -165,30 +120,26 @@ public class CreateArticleDTO implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateArticleDTO createArticleDTO = (CreateArticleDTO) o;
-    return Objects.equals(this.title, createArticleDTO.title) &&
-        Objects.equals(this.shortTitle, createArticleDTO.shortTitle) &&
-        Objects.equals(this.text, createArticleDTO.text) &&
-        Objects.equals(this.createdAt, createArticleDTO.createdAt) &&
-        Objects.equals(this.author, createArticleDTO.author) &&
-        Objects.equals(this.topicType, createArticleDTO.topicType);
+    CreateCommentDTO createCommentDTO = (CreateCommentDTO) o;
+    return Objects.equals(this.articleID, createCommentDTO.articleID) &&
+        Objects.equals(this.text, createCommentDTO.text) &&
+        Objects.equals(this.createdAt, createCommentDTO.createdAt) &&
+        Objects.equals(this.author, createCommentDTO.author);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, shortTitle, text, createdAt, author, topicType);
+    return Objects.hash(articleID, text, createdAt, author);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateArticleDTO {\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    shortTitle: ").append(toIndentedString(shortTitle)).append("\n");
+    sb.append("class CreateCommentDTO {\n");
+    sb.append("    articleID: ").append(toIndentedString(articleID)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    author: ").append(toIndentedString(author)).append("\n");
-    sb.append("    topicType: ").append(toIndentedString(topicType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -69,6 +69,7 @@ public class NameDayWidgetComponent extends FlexLayout {
         todayDateTitle.getStyle()
                 .set("color", "var(--lumo-contrast-color)");
 
+
         H3 todayDateValue = new H3(DATE_TIME_FORMATTER.format(
                 LocalDate.of(currentYear, currentMonth, currentDay))
         );

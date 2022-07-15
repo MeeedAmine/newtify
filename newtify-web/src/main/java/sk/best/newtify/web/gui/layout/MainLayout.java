@@ -1,5 +1,6 @@
 package sk.best.newtify.web.gui.layout;
 
+import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -177,7 +178,13 @@ public class MainLayout extends AppLayout {
                 .set("align-items", "center")
                 .set("height", "100%");
 
+        titleDiv.addClickListener(this::onClick);
         navigationBar.add(titleDiv);
+    }
+
+    private void onClick(ClickEvent<Div> divClickEvent) {
+        UI.getCurrent().navigate(ETopicType.NEWS.getValue().toLowerCase());
+        return;
     }
 
 }
