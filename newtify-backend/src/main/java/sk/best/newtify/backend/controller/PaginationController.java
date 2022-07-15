@@ -15,9 +15,9 @@ public class PaginationController {
     @Autowired
     private IArticleService articleService;
 
-    @GetMapping("/countries/{pageNo}/{pageSize}")
-    public List<Article> getPaginatedCountries(@PathVariable int pageNo,
-                                               @PathVariable int pageSize) {
+    @GetMapping("/news/{pageNo}/{pageSize}")
+    public List<Article> getPaginatedArticles(@PathVariable int pageNo,
+                                              @PathVariable int pageSize) {
 
         return articleService.findPaginated(pageNo, pageSize);
     }
