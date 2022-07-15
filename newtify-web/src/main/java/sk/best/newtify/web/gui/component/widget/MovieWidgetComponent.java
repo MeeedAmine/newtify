@@ -35,7 +35,7 @@ public class MovieWidgetComponent extends FlexLayout{
     @PostConstruct
     private void init() {
 
-
+        createWidgetIcon();
         List<Map<String, Object>> movies = movieApi.getMoviesResponseEntity();
 
         for (int i=0; i<movies.toArray().length; i++) {
@@ -52,30 +52,54 @@ public class MovieWidgetComponent extends FlexLayout{
         this.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         this.setAlignItems(FlexComponent.Alignment.CENTER);
         this.setWidthFull();
+
+
     }
 
-//    private void createWidgetIcon() {
-//        Icon calendarIcon = VaadinIcon.CALENDAR_USER.create();
-//        calendarIcon.setSize("5em");
-//        calendarIcon.setColor("var(--lumo-contrast-color)");
-//
-//        this.add(calendarIcon);
-//    }
+   private void createWidgetIcon() {
+        Icon calendarIcon = VaadinIcon.FILE_MOVIE.create();
+        calendarIcon.setSize("5em");
+        calendarIcon.setColor("var(--lumo-contrast-color)");
+
+        this.add(calendarIcon);
+    }
 
 
     private void createFiledPart(String rank, String title, String gross) {
 
+        H4 FieldValue = new H4(rank);
+        H3 FileValueTitle = new H3(title + " ");
+        H4 FieldValueGross = new H4(gross + " ");
 
-        H3 FieldValue = new H3(rank + " " + title + " "+gross + " "
-        );
         FieldValue.getStyle()
                 .set("color", "white")
                 .set("font-style", "italic")
                 .set("margin", "0")
-                .set("text-allign","left");
+                .set("text-align","center")
+                .set("font-size","15px");
 
 
         this.add(FieldValue);
+
+        FileValueTitle.getStyle()
+                .set("color", "white")
+                .set("font-style", "italic")
+                .set("margin", "0")
+                .set("text-align","center")
+                .set("font-size","15px");
+
+
+        this.add(FileValueTitle);
+
+        FieldValueGross.getStyle()
+                .set("color", "white")
+                .set("font-style", "italic")
+                .set("margin", "0")
+                .set("text-align","center")
+                .set("font-size","15px");
+
+
+        this.add(FieldValueGross);
     }
 
     private void createTitlePart(MovieDTO titledata) {

@@ -87,9 +87,9 @@ public class NewsView extends FlexLayout {
         setFlexGrow(1, leftWidgetContent);
 
         NameDayWidgetComponent nameDayWidget = nameDayWidgetComponentObjectFactory.getObject();
-        MovieWidgetComponent movieWidgetComponent = movieWidgetComponentObjectFactory.getObject();
+        //MovieWidgetComponent movieWidgetComponent = movieWidgetComponentObjectFactory.getObject();
         leftWidgetContent.add(nameDayWidget);
-        leftWidgetContent.add(movieWidgetComponent);
+        //leftWidgetContent.add(movieWidgetComponent);
     }
 
 
