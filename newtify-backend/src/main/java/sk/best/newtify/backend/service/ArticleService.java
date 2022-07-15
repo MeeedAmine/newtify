@@ -1,5 +1,6 @@
 package sk.best.newtify.backend.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -9,16 +10,25 @@ import sk.best.newtify.api.dto.ETopicType;
 import sk.best.newtify.backend.entity.Article;
 import sk.best.newtify.backend.entity.enums.TopicType;
 import sk.best.newtify.backend.repository.ArticleRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 @Service
-public class ArticleService {
-
+public class ArticleService implements IArticleService {
+    @Autowired
     private ArticleRepository articleRepository;
 
+    @Override
+    public List<Article> findPaginated(int pageNo, int pageSize) {
+
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        Page<Article> pagedResult = articleRepository.findAll(paging);
+
+        return pagedResult.toList();
+    }
     public ArticleService(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }
@@ -120,6 +130,5 @@ public class ArticleService {
         article.setTopicType(createArticleDTO.getTopicType() != null ? TopicType.fromValue(createArticleDTO.getTopicType().getValue()) : article.getTopicType());
         articleRepository.save(article);
     }
-
 
 }

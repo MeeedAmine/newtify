@@ -44,6 +44,7 @@ public class NameDayWidgetComponent extends FlexLayout {
         int currentYear = calendar.get(Calendar.YEAR);
         NameDayDTO data = namedaysApi.retrieveNameDay(currentMonth, currentDay).getBody();
 
+
         createWidgetIcon();
         createDatePart(currentYear, currentMonth, currentDay);
         createNameDayPart(data);
@@ -64,19 +65,36 @@ public class NameDayWidgetComponent extends FlexLayout {
         this.add(calendarIcon);
     }
 
+    private String getDayNumberSuffix(int currentDay) {
+        if (currentDay >= 11 && currentDay<= 13) {
+            return "th";
+        }
+        switch (currentDay % 10) {
+            case 1:
+                return "st";
+            case 2:
+                return "nd";
+            case 3:
+                return "rd";
+            default:
+                return "th";
+        }
+    }
+
     private void createDatePart(int currentYear, int currentMonth, int currentDay) {
         H4 todayDateTitle = new H4("Today is");
         todayDateTitle.getStyle()
                 .set("color", "var(--lumo-contrast-color)");
 
+        H3 todayDateValue = new H3(currentDay + getDayNumberSuffix(currentDay) + " of " +
+                LocalDate.now().getMonth() + " " + LocalDate.now().getYear()
 
-        H3 todayDateValue = new H3(DATE_TIME_FORMATTER.format(
-                LocalDate.of(currentYear, currentMonth, currentDay))
         );
         todayDateValue.getStyle()
                 .set("color", "white")
                 .set("font-style", "italic")
                 .set("margin", "0");
+
 
         this.add(todayDateTitle, todayDateValue);
     }
