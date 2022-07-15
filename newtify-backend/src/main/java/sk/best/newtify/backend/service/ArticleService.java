@@ -18,7 +18,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 @Service
 public class ArticleService implements IArticleService {
-
     @Autowired
     private ArticleRepository articleRepository;
 
